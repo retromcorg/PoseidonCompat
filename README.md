@@ -1,45 +1,23 @@
-# Poseidon-Plugin-Template
+# PoseidonCompat
 
-This repository serves as a template to assist with creating plugins for Project Poseidon.
+PoseidonCompat is a compatibility plugin for running legacy Project Poseidon plugins on Poseidon v2. It packages dependencies that were available to older plugins but are not supplied by Poseidon v2.
 
-It includes examples of:
-- A configuration file.
-- A listener.
-- A command.
+The initial release includes [JSON Simple](https://github.com/fangyidong/json-simple) 1.1.
 
-## Steps to Use This Template
+## Requirements
 
-1. **Clone the Repository**
-    - Clone this repository to your local machine.
+- Poseidon v2.0.0 or newer
+- Java 25
 
-2. **Modify `pom.xml`**
-    - Update the following fields to reflect your plugin:
-        - `name`
-        - `version`
-        - `description`
-    - **Note:** Removing `-SNAPSHOT` from the version will trigger the `release.yml` GitHub Action to create a GitHub release.
+## Installation
 
-3. **Refactor Package Structure**
-    - Refactor the package `org.retromc.templateplugin` to a unique package name for your plugin to avoid conflicts.
+1. Download `PoseidonCompat-<version>.jar` from the GitHub Releases page.
+2. Place it in the server's `plugins` directory.
+3. Restart the server.
 
-4. **Update `plugin.yml`**
-    - Update the `plugin.yml` file to match the refactored package name and plugin metadata.
+Plugins that require this compatibility layer should declare it in `plugin.yml` so Poseidon loads it first:
 
-5. **Modify the Code**
-    - Customize the code as required for your plugin.
-    - **Important:**
-        - Remove the player greeting example in the listener.
-        - Remove the test command.
-
-## GitHub Actions
-
-This repository includes a pre-configured GitHub Action:
-
-1. **`build-and-test.yml`**:
-    - Runs tests on every push to ensure code quality.
-    - Uploads an artifact for each commit, allowing others to download the plugin for testing.
-
-2. **`release.yml`**:
-    - Automatically creates a GitHub release if the `-SNAPSHOT` suffix is removed from the version in `pom.xml`.
-
-With this template, you can kickstart your plugin development for Project Poseidon quickly and efficiently.
+```yaml
+depend:
+  - PoseidonCompat
+```
