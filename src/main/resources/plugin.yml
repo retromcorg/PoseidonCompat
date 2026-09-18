@@ -1,22 +1,8 @@
 name: ${project.name}
 description: ${project.description}
-main: org.retromc.templateplugin.TemplatePlugin
+main: com.legacyminecraft.poseidoncompat.PoseidonCompatPlugin
 version: ${project.version}
 authors:
   - JohnyMuffin
-softdepend:
-  - Essentials
 
-commands:
-  testcommand:
-    description: A test command for the plugin.
-    usage: /<command> [args]
-    aliases: [tc]
-    permission: myplugin.testcommand
-    permission-message: You do not have permission to use this command.
-
-permissions:
-  myplugin.*:
-    description: Gives access to all myplugin commands.
-    children:
-      myplugin.testcommand: true
+load: STARTUP
